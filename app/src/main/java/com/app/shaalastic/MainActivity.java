@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.app.shaalastic.Assignments.Assignments;
+import com.app.shaalastic.Components.Component;
 import com.app.shaalastic.Users.Users;
 import com.app.shaalastic.data.DBHelper;
 
@@ -89,6 +90,11 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("fragment",ChildActivity.CREATE_USER);
             startActivity(i);
         }
+        else if(id==R.id.menuitem_createComponent){
+            i.putExtra("fragment",ChildActivity.CREATE_COMPONENT);
+            startActivity(i);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -115,6 +121,16 @@ public class MainActivity extends AppCompatActivity
             fragment=new Assignments();
             bar="Assignments";
             menuId=R.menu.menu_assignments;
+        }
+        else if (id == R.id.nav_user ) {
+            fragment=new Users();
+            bar="User";
+            menuId=R.menu.menu_user;
+        }
+        else if (id == R.id.nav_component ) {
+            fragment=new Component();
+            bar="Component";
+            menuId=R.menu.menu_component;
         }
         getSupportActionBar().setTitle(bar);
         if (menu!=null){

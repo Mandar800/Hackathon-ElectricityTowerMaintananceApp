@@ -14,20 +14,20 @@ import android.widget.TextView;
 
 import com.app.shaalastic.Assignments.CreateAssignment;
 import com.app.shaalastic.Assignments.viewAssignment;
+import com.app.shaalastic.Components.CreateComponent;
+import com.app.shaalastic.Components.viewComponent;
 import com.app.shaalastic.Users.CreateUser;
 
 public class ChildActivity extends AppCompatActivity {
 
-    public static int TAKE_ATTENDANCE=100;
     public static int CREATE_ASSIGNMENT=200;
     public static int VIEW_ASSIGNMENT=201;
     public static int CREATE_USER=300;
     public static int VIEW_USER=301;
-    public static int ADD_PARENT=400;
-    public static int VIEW_STUDY_MAT=202;
-    public static int Create_Classroom=203;
-    public static int Add_ClassroomTT=204;
-    public static int View_classrooms=231;
+    public static int CREATE_COMPONENT=400;
+    public static int VIEW_COMPONENT=401;
+
+
     private int fragId;
     private Intent intent=null;
 
@@ -72,6 +72,17 @@ public class ChildActivity extends AppCompatActivity {
             fragment= new CreateUser();
             title="Create User";
         }
+         else if(fragId==VIEW_COMPONENT){
+             fragment= new viewComponent();
+             Bundle bundle=new Bundle();
+             bundle.putString("title",intent.getStringExtra("title"));
+             fragment.setArguments(bundle);
+             title="Component";
+         }
+         else if(fragId==CREATE_COMPONENT){
+             fragment= new CreateComponent();
+             title="Create Component";
+         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.childLayout,fragment).commit();
         getSupportActionBar().setTitle(title);
