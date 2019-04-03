@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Import_Subjects"
+        android:id="@+id/import_subjects">
+    </item>
+    <item
+        android:title="Add_Subjects"
+        android:id="@+id/add_subjects">
+    </item>
+</menu>

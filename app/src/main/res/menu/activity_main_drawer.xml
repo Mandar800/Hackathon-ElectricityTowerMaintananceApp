@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_assignments"
+            android:title="Assignments" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:title="Tower" />
+        <item
+            android:id="@+id/nav_user"
+            android:title="Users" />
+        <item
+            android:id="@+id/nav_parent"
+            android:title="Components" />
+        <item
+            android:id="@+id/nav_subjects"
+            android:title="Extra" />
+
+    </group>
+</menu>

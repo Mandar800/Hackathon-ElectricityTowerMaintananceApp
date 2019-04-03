@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Users.CreateUser"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Roll No"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email-ID"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender "/>
+        <Spinner
+            android:entries="@array/usergender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginVertical="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Birthdate "/>
+            <TextView
+                android:id="@+id/selectedDate"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="calendar"
+                android:src="@android:drawable/ic_menu_my_calendar" />
+        </LinearLayout>
+
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Role: "/>
+        <Spinner
+            android:entries="@array/userrole"
+            android:id="@+id/userrole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+        <Button
+            android:id="@+id/createUserSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="Save" />
+
+
+    </LinearLayout>
+</ScrollView>
