@@ -11,16 +11,16 @@
             android:id="@+id/nav_assignments"
             android:title="Assignments" />
         <item
-            android:id="@+id/nav_attendance"
+            android:id="@+id/nav_Tower"
             android:title="Tower" />
         <item
             android:id="@+id/nav_user"
             android:title="Users" />
         <item
-            android:id="@+id/nav_parent"
+            android:id="@+id/nav_components"
             android:title="Components" />
         <item
-            android:id="@+id/nav_subjects"
+            android:id="@+id/nav_Extra"
             android:title="Extra" />
 
     </group>
