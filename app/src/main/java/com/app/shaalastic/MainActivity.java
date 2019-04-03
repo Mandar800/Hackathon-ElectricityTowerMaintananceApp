@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.app.shaalastic.Assignments.Assignments;
+import com.app.shaalastic.Tower.Tower;
 import com.app.shaalastic.Users.Users;
 import com.app.shaalastic.data.DBHelper;
 
@@ -84,26 +85,9 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("fragment",ChildActivity.CREATE_ASSIGNMENT);
             startActivity(i);
         }
-        else if (id==R.id.menuitem_takeAttendance){
-            i.putExtra("fragment",ChildActivity.TAKE_ATTENDANCE);
-            startActivity(i);
-        }
+
         else if(id==R.id.menuitem_createUser){
             i.putExtra("fragment",ChildActivity.CREATE_USER);
-            startActivity(i);
-        }
-        else if(id==R.id.menuitem_addparent){
-            i.putExtra("fragment",ChildActivity.ADD_PARENT);
-            startActivity(i);
-        }
-        else if (id==R.id.menuitem_addSM){
-            i.putExtra("fragment",ChildActivity.VIEW_STUDY_MAT);
-            startActivity(i);
-        }else if(id==R.id.menuitem_createclass){
-            i.putExtra("fragment",ChildActivity.Create_Classroom);
-            startActivity(i);
-        }else if(id==R.id.menuitem_createclasstt){
-            i.putExtra("fragment",ChildActivity.Add_ClassroomTT);
             startActivity(i);
         }
 
@@ -132,6 +116,10 @@ public class MainActivity extends AppCompatActivity
             fragment=new Assignments();
             bar="Assignments";
             menuId=R.menu.menu_assignments;
+        } else if (id == R.id.nav_Tower) {
+            fragment=new Tower();
+            bar="Tower";
+            menuId=R.menu.menu_tower;
         }
         getSupportActionBar().setTitle(bar);
         if (menu!=null){

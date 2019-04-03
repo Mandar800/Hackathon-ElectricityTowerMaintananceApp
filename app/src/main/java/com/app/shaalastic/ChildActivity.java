@@ -11,9 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
-
+import com.app.shaalastic.Tower.TowerAdapter;
+import com.app.shaalastic.Tower.TowerData;
 import com.app.shaalastic.Assignments.CreateAssignment;
 import com.app.shaalastic.Assignments.viewAssignment;
+import com.app.shaalastic.Tower.viewTower;
 import com.app.shaalastic.Users.CreateUser;
 
 public class ChildActivity extends AppCompatActivity {
@@ -21,6 +23,7 @@ public class ChildActivity extends AppCompatActivity {
     public static int TAKE_ATTENDANCE=100;
     public static int CREATE_ASSIGNMENT=200;
     public static int VIEW_ASSIGNMENT=201;
+    public static int VIEW_TOWER=205;
     public static int CREATE_USER=300;
     public static int VIEW_USER=301;
     public static int ADD_PARENT=400;
@@ -72,6 +75,13 @@ public class ChildActivity extends AppCompatActivity {
             fragment= new CreateUser();
             title="Create User";
         }
+         else if(fragId==VIEW_TOWER){
+             fragment= new viewTower();
+             Bundle bundle=new Bundle();
+             bundle.putString("title",intent.getStringExtra("title"));
+             fragment.setArguments(bundle);
+             title="Tower";
+         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.childLayout,fragment).commit();
         getSupportActionBar().setTitle(title);
