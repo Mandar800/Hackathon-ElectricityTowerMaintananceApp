@@ -84,26 +84,9 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("fragment",ChildActivity.CREATE_ASSIGNMENT);
             startActivity(i);
         }
-        else if (id==R.id.menuitem_takeAttendance){
-            i.putExtra("fragment",ChildActivity.TAKE_ATTENDANCE);
-            startActivity(i);
-        }
+
         else if(id==R.id.menuitem_createUser){
             i.putExtra("fragment",ChildActivity.CREATE_USER);
-            startActivity(i);
-        }
-        else if(id==R.id.menuitem_addparent){
-            i.putExtra("fragment",ChildActivity.ADD_PARENT);
-            startActivity(i);
-        }
-        else if (id==R.id.menuitem_addSM){
-            i.putExtra("fragment",ChildActivity.VIEW_STUDY_MAT);
-            startActivity(i);
-        }else if(id==R.id.menuitem_createclass){
-            i.putExtra("fragment",ChildActivity.Create_Classroom);
-            startActivity(i);
-        }else if(id==R.id.menuitem_createclasstt){
-            i.putExtra("fragment",ChildActivity.Add_ClassroomTT);
             startActivity(i);
         }
 
