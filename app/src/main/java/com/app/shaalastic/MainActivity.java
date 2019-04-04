@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.app.shaalastic.Assignments.Assignments;
 import com.app.shaalastic.Components.Component;
+import com.app.shaalastic.Tower.Tower;
 import com.app.shaalastic.Users.Users;
 import com.app.shaalastic.data.DBHelper;
 
@@ -131,6 +132,11 @@ public class MainActivity extends AppCompatActivity
             fragment=new Component();
             bar="Component";
             menuId=R.menu.menu_component;
+        }
+        else if (id == R.id.nav_tower ) {
+            fragment=new Tower();
+            bar="Tower";
+            menuId=R.menu.menu_tower;
         }
         getSupportActionBar().setTitle(bar);
         if (menu!=null){

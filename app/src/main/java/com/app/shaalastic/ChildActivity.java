@@ -26,6 +26,8 @@ public class ChildActivity extends AppCompatActivity {
     public static int VIEW_USER=301;
     public static int CREATE_COMPONENT=400;
     public static int VIEW_COMPONENT=401;
+    public static int CREATE_TOWER=401;
+    public static int VIEW_TOWER=501;
 
 
     private int fragId;

@@ -17,6 +17,9 @@
         <item
             android:id="@+id/nav_component"
             android:title="Component" />
+        <item
+            android:id="@+id/nav_tower"
+            android:title="Tower" />
 
 
 
