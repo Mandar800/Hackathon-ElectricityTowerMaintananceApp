@@ -38,7 +38,7 @@ public class UserAdapter extends Adapter<UserAdapter.Holder> {
     public void onBindViewHolder(@NonNull Holder holder, int i) {
         final UserData data=user.get(i);
         holder.name.setText(data.getName());
-        holder.userrollno.setText(data.getRollno());
+        holder.uid.setText(data.getUid());
         holder.viewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,9 +49,6 @@ public class UserAdapter extends Adapter<UserAdapter.Holder> {
             }
         });
     }
-    public void viewUser(){
-
-    }
     @Override
     public int getItemCount() {
         return user.size();
@@ -59,14 +56,14 @@ public class UserAdapter extends Adapter<UserAdapter.Holder> {
 
     public class Holder extends RecyclerView.ViewHolder {
         TextView name;
-        TextView userrollno;
+        TextView uid;
         LinearLayout linearLayout;
         Button viewUser;
         public Holder(@NonNull View itemView) {
             super(itemView);
             linearLayout=(LinearLayout)itemView.findViewById(R.id.userOptions);
             name=(TextView)itemView.findViewById(R.id.userName);
-            userrollno=(TextView)itemView.findViewById(R.id.userRollno);
+            uid=(TextView)itemView.findViewById(R.id.userRollno);
             viewUser=(Button)itemView.findViewById(R.id.viewUser);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
