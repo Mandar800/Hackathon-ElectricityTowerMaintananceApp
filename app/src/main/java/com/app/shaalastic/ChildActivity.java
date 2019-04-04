@@ -16,6 +16,8 @@ import com.app.shaalastic.Assignments.CreateAssignment;
 import com.app.shaalastic.Assignments.viewAssignment;
 import com.app.shaalastic.Components.CreateComponent;
 import com.app.shaalastic.Components.viewComponent;
+import com.app.shaalastic.Tower.CreateTower;
+import com.app.shaalastic.Tower.viewTower;
 import com.app.shaalastic.Users.CreateUser;
 
 public class ChildActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class ChildActivity extends AppCompatActivity {
     public static int VIEW_USER=301;
     public static int CREATE_COMPONENT=400;
     public static int VIEW_COMPONENT=401;
-    public static int CREATE_TOWER=401;
+    public static int CREATE_TOWER=500;
     public static int VIEW_TOWER=501;
 
 
@@ -85,6 +87,18 @@ public class ChildActivity extends AppCompatActivity {
              fragment= new CreateComponent();
              title="Create Component";
          }
+         else if(fragId==VIEW_TOWER){
+             fragment= new viewTower();
+             Bundle bundle=new Bundle();
+             bundle.putString("title",intent.getStringExtra("title"));
+             fragment.setArguments(bundle);
+             title="Tower";
+         }
+         else if(fragId==CREATE_TOWER){
+             fragment= new CreateTower();
+             title="Create Tower";
+         }
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.childLayout,fragment).commit();
         getSupportActionBar().setTitle(title);

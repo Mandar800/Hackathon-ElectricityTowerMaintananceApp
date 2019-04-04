@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("fragment",ChildActivity.CREATE_COMPONENT);
             startActivity(i);
         }
+        else if(id==R.id.menuitem_createTower){
+            i.putExtra("fragment",ChildActivity.CREATE_TOWER);
+            startActivity(i);
+        }
 
 
         return super.onOptionsItemSelected(item);
