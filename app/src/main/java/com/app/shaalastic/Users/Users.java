@@ -1,8 +1,9 @@
 package com.app.shaalastic.Users;
 
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -14,26 +15,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.toolbox.ImageLoader;
-import com.app.shaalastic.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.app.shaalastic.R;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.widget.Toast.*;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -81,6 +82,69 @@ public class Users extends Fragment{
         return fragment;
     }
 
+    @SuppressLint("StaticFieldLeak")
+    public class Downloadtask extends AsyncTask<String,Void,JSONObject> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... strings) {
+            final String Token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk1ODkyOTAsImV4cCI6MTU1OTU5Mjg5MCwibmJmIjoxNTU5NTg5MjkwLCJqdGkiOiJ1S2xZNjdOcUd4NUQwV1lZIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.1WIAyOkH60X_Z7g2NZeRBYool-4cxhxcdR5S6IP3JN8";
+            URL url;
+            try {
+                url= new URL(strings[0]);
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url.toString(),null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+
+                    }
+                }) {
+                    public Map<String, String> getHeaders() {
+
+                        HashMap<String, String> headers = new HashMap<>();
+                        headers.put("Content-Type", "application/json");
+                        headers.put("Authorization", "Bearer "+Token);
+                        return headers;
+
+                    }
+                };
+
+
+
+                RequestQueue mQueue;
+                mQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+                mQueue.add(request);
+
+
+
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+            super.onPostExecute(jsonObject);
+
+        }
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,16 +153,13 @@ public class Users extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                jsonParse();
-            }
-        }).start();
+        Downloadtask task=new Downloadtask();
+        task.execute("https://demo.e-ducate.in/api/users");
 
     }
 
-    public void jsonParse() {
+
+    /*public void jsonParse() {
         final String Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk1NDg3NTcsImV4cCI6MTU1OTU1MjM1NywibmJmIjoxNTU5NTQ4NzU3LCJqdGkiOiJIdXdLRTdDUGtva3Z0anhNIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.JlgbzA8LkYhFE712F58WZXyvYXNR-t30rHRFo7GWcu4";
         String url = "https://demo.e-ducate.in/api/users";
 
@@ -153,7 +214,7 @@ public class Users extends Fragment{
         mQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         mQueue.add(request);
     }
-
+*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
