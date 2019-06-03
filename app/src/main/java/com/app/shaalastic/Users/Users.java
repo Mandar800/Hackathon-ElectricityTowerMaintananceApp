@@ -99,8 +99,8 @@ public class Users extends Fragment{
     }
 
     public void jsonParse() {
-        final String Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2hhY2thdGhvbi5lLWR1Y2F0ZS5pbi9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTU1NDM4MDYwMCwiZXhwIjoxNTU0Mzg0MjAwLCJuYmYiOjE1NTQzODA2MDAsImp0aSI6IjJUVnZNVTJMaGk5RGlUQU0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.DRD3HYCek-mBYOGR4bK3-KXPJm5C9Vt_3emtT1GRYcw";
-        String url = "https://Hackathon.e-ducate.in/api/users";
+        final String Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk1NDg3NTcsImV4cCI6MTU1OTU1MjM1NywibmJmIjoxNTU5NTQ4NzU3LCJqdGkiOiJIdXdLRTdDUGtva3Z0anhNIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.JlgbzA8LkYhFE712F58WZXyvYXNR-t30rHRFo7GWcu4";
+        String url = "https://demo.e-ducate.in/api/users";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null,
                 new Response.Listener<JSONObject>() {
