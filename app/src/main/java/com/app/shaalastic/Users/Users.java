@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,8 +31,6 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static android.widget.Toast.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,67 +79,6 @@ public class Users extends Fragment{
         return fragment;
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public class Downloadtask extends AsyncTask<String,Void,JSONObject> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... strings) {
-            final String Token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk1ODkyOTAsImV4cCI6MTU1OTU5Mjg5MCwibmJmIjoxNTU5NTg5MjkwLCJqdGkiOiJ1S2xZNjdOcUd4NUQwV1lZIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.1WIAyOkH60X_Z7g2NZeRBYool-4cxhxcdR5S6IP3JN8";
-            URL url;
-            try {
-                url= new URL(strings[0]);
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url.toString(),null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-
-
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-
-                    }
-                }) {
-                    public Map<String, String> getHeaders() {
-
-                        HashMap<String, String> headers = new HashMap<>();
-                        headers.put("Content-Type", "application/json");
-                        headers.put("Authorization", "Bearer "+Token);
-                        return headers;
-
-                    }
-                };
-
-
-
-                RequestQueue mQueue;
-                mQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-                mQueue.add(request);
-
-
-
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(JSONObject jsonObject) {
-            super.onPostExecute(jsonObject);
-
-        }
-    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -153,14 +89,13 @@ public class Users extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Downloadtask task=new Downloadtask();
-        task.execute("https://demo.e-ducate.in/api/users");
+       jsonParse();
 
     }
 
 
-    /*public void jsonParse() {
-        final String Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk1NDg3NTcsImV4cCI6MTU1OTU1MjM1NywibmJmIjoxNTU5NTQ4NzU3LCJqdGkiOiJIdXdLRTdDUGtva3Z0anhNIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.JlgbzA8LkYhFE712F58WZXyvYXNR-t30rHRFo7GWcu4";
+    public void jsonParse() {
+        final String Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlbW8uZS1kdWNhdGUuaW4vYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1NTk2NjQyMTQsImV4cCI6MTU1OTY2NzgxNCwibmJmIjoxNTU5NjY0MjE0LCJqdGkiOiJLd0I5eG5YWmVzQ1JtU09VIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.6D4npqkiKMCYqxF8HoRY9EmXEnQ7PfVjP0xE7AjXIkk";
         String url = "https://demo.e-ducate.in/api/users";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null,
@@ -173,17 +108,17 @@ public class Users extends Fragment{
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject Users = jsonArray.getJSONObject(i);
 
-                                String Name = Users.optString("name");
+                                String id = Users.optString("id");
+                                String name = Users.optString("name");
                                 String email = Users.optString("email");
-                                String phno = Users.optString("phone_number");
 
                                 String gender = Users.optString("gender");
 
-                                String uid = Users.optString("uid_no");
+                                String phno = Users.optString("phone_number");
 
-                                String role = Users.optString("role_id");
+                                String roll_no = Users.optString("roll_no");
 
-                                data.add(new UserData(Name, email, role, phno, gender, uid));
+                                data.add(new UserData(name, email, roll_no, phno, gender, id));
 
                             }
                         } catch (JSONException e) {
@@ -214,7 +149,7 @@ public class Users extends Fragment{
         mQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         mQueue.add(request);
     }
-*/
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

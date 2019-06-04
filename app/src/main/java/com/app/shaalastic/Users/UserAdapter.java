@@ -38,7 +38,7 @@ public class UserAdapter extends Adapter<UserAdapter.Holder> {
     public void onBindViewHolder(@NonNull Holder holder, int i) {
         final UserData data=user.get(i);
         holder.name.setText(data.getName());
-        holder.uid.setText(data.getUid());
+        holder.uid.setText(data.getid());
         holder.viewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

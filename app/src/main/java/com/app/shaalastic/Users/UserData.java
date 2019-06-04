@@ -3,17 +3,17 @@ package com.app.shaalastic.Users;
 public class UserData {
     private String name;
     private String email;
-    private String role;
+    private String roll_no;
     private String phno;
     private String gender;
-    private String uid;
-    UserData(String name, String email, String role, String phno, String gender, String uid){
+    private String id;
+    UserData(String name, String email, String roll_no, String phno, String gender, String id){
         this.name=name;
         this.email=email;
-        this.role=role;
+        this.roll_no=roll_no;
         this.phno=phno;
         this.gender=gender;
-        this.uid=uid;
+        this.id=id;
 
 
     }
@@ -24,8 +24,8 @@ public class UserData {
     public String getemail() {
         return email;
     }
-    public String getrole(){return  role;}
+    public String getroll_no(){return  roll_no;}
     public String getPhno(){return  phno;}
     public String getGender(){return  gender;}
-    public String getUid(){return uid;}
+    public String getid(){return id;}
 }
